@@ -74,7 +74,7 @@ newTrial("modelD",
 
 newTrial("modelT",
 
-    newAudio("t","da+10.wav"),
+    newAudio("t","dax10.wav"),
     newKey("play-t", "J")
     .settings.callback(
         getAudio("t")
