@@ -29,16 +29,21 @@ newTrial("instructions",
 
     fullscreen(),
     
-    newText(`<p>Welcome! In this experiment, you will hear Russian consonant sounds. </p><p> You will hear a sound, and you will press a button to indicate what sound you heard.</p><p>
-            PRESS the 'f' button if you hear a "D" sound.</p><p>
-            PRESS the 'j' button if you hear a "T" sound.</p><p>
-            Try to respond as accurately and quickly as possible. If you wait more than 6 seconds, you will not be able to respond, and the next sound will be played.</p><p>
-            Before you begin, you will have a chance to hear a model of these sounds.</p>`)
+    newText(`<div style="display: block; justify-content: space-between; padding: 0 50px;">
+            <p>Welcome!</p>
+            <p>In this experiment, you will listen to Russian consonant sounds.</p>
+            <p>Your task is to identify each sound you hear by pressing the appropriate button.</p>
+            <p>Press the 'J' key if you hear the "D" sound.</p>
+            <p>Press the 'F' key if you hear the "T" sound.</p>
+            <p>Please try to respond as quickly and accurately as possible. 
+            If you take longer than 6 seconds to respond, the next sound will play automatically.</p>
+            <p>Before starting, you will have a chance to listen to examples of these sounds.</p>
+            <p>Click the button below when you are ready to begin the practice session.</p></div>`)
             .css("font-family", "Helvetica, sans-serif")
             .css("font-size", "16px")
             .print("center at 50%", "middle at 50%")
     ,
-    newButton("Click when you are ready to begin")
+    newButton("Start")
         .css("font-family", "Helvetica, sans-serif")
         .css("font-size", "16px")
         .center()
@@ -50,20 +55,20 @@ newTrial("instructions",
 newTrial("modelD",
 
     newAudio("d","da44.wav"),
-    newKey("play-d", "F")
+    newKey("play-d", "J")
     .settings.callback(
         getAudio("d")
         .play("once")
         .remove()
         ),
-    newText(`<p>This is the "D" model.</p><p>
-            You may listen to it by pressing the 'f' key.</p><p>`)
+    newText(`<p>This is an example of the "D" sound.</p><p>
+            You may listen to it by pressing the 'J' key.</p><p>`)
             .css("font-family", "Helvetica, sans-serif")
             .css("font-size", "16px")
             .print("center at 50%", "middle at 50%")
 
     ,
-    newButton("I'm ready to move on")
+    newButton("Next")
         .css("font-family", "Helvetica, sans-serif")
         .css("font-size", "16px")
         .center()
@@ -81,14 +86,14 @@ newTrial("modelT",
         .play("once")
         .remove()
         ),
-    newText(`<p>This is the "T" model.</p><p>
-            You may listen to it by pressing the 'j' key.</p><p>`)
+    newText(`<p>This is an example of the "T" sound.</p><p>
+            You may listen to it by pressing the 'F' key.</p><p>`)
             .css("font-family", "Helvetica, sans-serif")
             .css("font-size", "16px")
             .print("center at 50%", "middle at 50%")
 
     ,
-    newButton("I'm ready to move on")
+    newButton("Start the experiment")
         .css("font-family", "Helvetica, sans-serif")
         .css("font-size", "16px")
         .center()
@@ -102,9 +107,12 @@ Template( "Russian_ID.csv",
     currentrow => 
     newTrial("main.trial",
 
-    newText(`<p>Remember:</p><p>
-            Press 'f' if you hear a 'D' sound.</p><p>
-            Press 'j' if you hear a 'T' sound.</p><p>`)
+    newText(`
+            <div style="display: flex; justify-content: space-between;">
+            <div style="text-align: center; width: 50%; padding-right: 100px;">
+            <p>Press 'F' if you hear a 'T' sound.</p></div>
+            <div style="text-align: center; width: 50%; padding-right: 100px;">
+            <p>Press 'J' if you hear a 'D' sound.</p></div></div>`)
             .css("font-family", "Helvetica, sans-serif")
             .css("font-size", "24px")
             .print("center at 50%", "middle at 50%"),
@@ -138,7 +146,8 @@ SendResults("send");
 newTrial("end",
     exitFullscreen()
     ,
-    newText("The is the end of the experiment, you can now close this window. Thank you!")
+    newText(`<div style="display: block; justify-content: space-between; padding: 0 50px;">
+             <p>The is the end of the experiment, you can now close this window. Thank you!</p></div>`)
         .css("font-family", "Helvetica, sans-serif")
         .css("font-size", "16px")
         .center()
